@@ -15,7 +15,8 @@ const defaults = {
   accessToken: null,
   target: 'instafetch',
   numOfPics: 20,
-  caption: false
+  caption: false,
+  alt: false
 };
 
 //
@@ -85,6 +86,11 @@ const checkSettings = options => {
     console.error('caption must be a boolean.');
     return false;
   }
+  if (typeof options.alt !== 'boolean') {
+    console.error('alt must be a boolean.');
+    return false;
+  }
+
 
   return true;
 };
@@ -134,6 +140,7 @@ const displayFeed = (json, options) => {
     figure = document.createElement('figure');
     img = document.createElement('img');
     img.src = data.images.standard_resolution.url;
+    img.alt = '';
     figure.appendChild(img);
     a.appendChild(figure);
     article.appendChild(a);
@@ -144,6 +151,10 @@ const displayFeed = (json, options) => {
       p.innerHTML = data.caption.text;
       div.appendChild(p);
       a.appendChild(div);
+    }
+
+    if (options.alt && data.caption) {
+      img.alt = data.caption.text;
     }
 
     targetEl.appendChild(article);

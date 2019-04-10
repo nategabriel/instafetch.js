@@ -5,7 +5,7 @@
 Instafetch.js is a 6KB JavaScript plugin for the Instagram API using fetch instead of jQuery.
 
 ## Installation
-Instafetch.js is available on CDNJS, NPM, Bower, and GitHub. 
+Instafetch.js is available on CDNJS, NPM, Bower, and GitHub.
 
 ### CDNJS
 ```html
@@ -46,7 +46,8 @@ The Instagram API uses the OAuth 2.0 protocol, so you're going to need an access
     accessToken: 'ACCESS TOKEN',
     target: 'instafetch',
     numOfPics: 20,
-    caption: false
+    caption: false,
+    alt: false
   });
 </script>
 ```
@@ -59,6 +60,9 @@ The plugin also allows you to set the number of items to return from your feed a
 Instafetch.js was only 3KB initially, but those 3KB didn't support any version of Internet Explorer. IE will return "Promise is undefined" and the Instagram feed will be empty. Version 1.2 included the ES6-Promise polyfill, which added an extra 7KB just for IE. Version 1.3 removed the ES6-Promise polyfill for another Promise polyfill that only added 3KB.
 
 ## Changelog
+**1.5.1**
+* Added alt attribute to image
+
 **1.5**
 * Updated Promise polyfill
 * Fixed bug for returned images without a caption
